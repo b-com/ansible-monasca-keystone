@@ -10,6 +10,8 @@ keystone_users:
     password: password
     project: mini-mon
     role: monasca-agent
+    monitoring_delegate: False
+
 keystone_service_script: /usr/local/bin/create_monasca_service.py
 monasca_api_url: http://localhost:8070/v2.0
 monasca_virtualenv_dir: /opt/monasca

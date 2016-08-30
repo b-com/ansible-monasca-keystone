@@ -99,6 +99,15 @@ def add_user_roles(key, users):
       role = key.roles.create(role_name)
 
     key.roles.add_user_role(keystone_user, role, tenant)
+
+    delegate = bool(user['monitoring_delegate'])
+    if delegate:
+      role = get_role(key, 'monitoring_delegate')
+      if not role:
+        role = key.roles.create('monitoring_delegate')
+
+      key.roles.add_user_role(keystone_user, role, tenant)
+
   return True
 
 def add_service_endpoint(key, name, description, type, url, region):
